@@ -12,6 +12,7 @@ import static org.junit.Assert.assertNotNull;
 
 @FixMethodOrder
 public class EntitiesTest {
+
     private static final SessionFactory FACTORY = new Configuration().configure().buildSessionFactory();
 
     @Test
