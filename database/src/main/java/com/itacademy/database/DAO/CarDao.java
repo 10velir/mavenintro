@@ -1,6 +1,6 @@
-package com.it_academy.by.database.DAO;
+package com.itacademy.database.DAO;
 
-import com.it_academy.by.database.entities.Car;
+import com.itacademy.database.entities.Car;
 
 import java.sql.SQLException;
 

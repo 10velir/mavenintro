@@ -1,4 +1,4 @@
-package com.it_academy.by.database.entities;
+package com.itacademy.database.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

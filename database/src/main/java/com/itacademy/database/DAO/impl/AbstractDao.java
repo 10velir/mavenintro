@@ -1,5 +1,5 @@
-package com.it_academy.by.database.DAO.impl;
-import com.it_academy.by.database.db.DbConnector;
+package com.itacademy.database.DAO.impl;
+import com.itacademy.database.db.DbConnector;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -1,4 +1,4 @@
-package com.it_academy.by.database.entities;
+package com.itacademy.database.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -38,13 +38,16 @@ public class Car implements BaseEntity<Integer> {
     @Column(name = "model", nullable = false)
     private String model;
 
+    @Column(name = "max_speed")
+    private Integer maxSpeed;
+
     @Column(name = "dollars_per_hour", nullable = false)
-    private Double price;
+    private Integer price;
 
     @Builder.Default
     @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "user_car", schema = "rental_company",
+    @JoinTable(name = "car_user", schema = "rental_company",
                 joinColumns = @JoinColumn(name = "car_id"),
-                inverseJoinColumns = @JoinColumn(name = "client_id"))
+                inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<User> users = new ArrayList<>();
 }

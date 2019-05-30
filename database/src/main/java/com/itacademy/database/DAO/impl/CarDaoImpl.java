@@ -1,6 +1,6 @@
-package com.it_academy.by.database.DAO.impl;
-import com.it_academy.by.database.DAO.CarDao;
-import com.it_academy.by.database.entities.Car;
+package com.itacademy.database.DAO.impl;
+import com.itacademy.database.DAO.CarDao;
+import com.itacademy.database.entities.Car;
 
 import java.io.Serializable;
 import java.sql.PreparedStatement;
@@ -81,7 +81,7 @@ public class CarDaoImpl extends AbstractDao implements CarDao {
             car.setId(rs.getInt(1));
             car.setSupplier(rs.getString(2));
             car.setModel(rs.getString(3));
-            car.setPrice(rs.getDouble(4));
+            car.setPrice(rs.getInt(4));
         }
         close(rs);
         return car;
@@ -92,7 +92,7 @@ public class CarDaoImpl extends AbstractDao implements CarDao {
         car.setId(rs.getInt(1));
         car.setSupplier(rs.getString(2));
         car.setModel(rs.getString(3));
-        car.setPrice(rs.getDouble(4));
+        car.setPrice(rs.getInt(4));
         return car;
     }
 

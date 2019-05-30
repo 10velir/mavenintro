@@ -1,4 +1,4 @@
-package com.it_academy.by.database.entities;
+package com.itacademy.database.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 
@@ -39,5 +41,7 @@ public class ClientOrder implements BaseEntity<Long> {
     @Column(name = "lease_period", nullable = false)
     private LocalDateTime leasePeriod;
 
-
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private User user = new User();
 }

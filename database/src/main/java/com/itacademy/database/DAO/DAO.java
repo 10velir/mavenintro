@@ -1,4 +1,4 @@
-package com.it_academy.by.database.DAO;
+package com.itacademy.database.DAO;
 
 import java.io.Serializable;
 import java.sql.SQLException;

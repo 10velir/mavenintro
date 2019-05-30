@@ -1,4 +1,4 @@
-package com.it_academy.by.database.entities;
+package com.itacademy.database.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,15 +17,20 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @ToString(exclude = "passport")
@@ -35,6 +40,7 @@ import java.util.List;
 @Entity
 @Builder
 @Table(name = "user_", schema = "rental_company")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class User implements BaseEntity<Integer> {
 
     @Id
@@ -66,14 +72,17 @@ public class User implements BaseEntity<Integer> {
             fetch = FetchType.LAZY, optional = false)
     private Passport passport;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<ClientOrder> orders = new HashSet<>();
+
     @ManyToOne
     @JoinColumn(name = "address_id")
     private Address address;
 
     @Builder.Default
     @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "user_car", schema = "rental_company",
-            joinColumns = @JoinColumn(name = "client_id", referencedColumnName = ""),
+    @JoinTable(name = "car_user", schema = "rental_company",
+            joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "car_id"))
     private List<Car> cars = new ArrayList<>();
 }
